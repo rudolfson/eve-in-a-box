@@ -1,0 +1,9 @@
+plugins {
+    id "com.moowork.node" version "1.2.0"
+}
+
+task bootRun(type: NpmTask, dependsOn: 'npmInstall') {
+    group = 'application'
+    description = 'Run the clien app'
+    args = ['run', 'dev']
+}
