@@ -2,7 +2,7 @@
 grails:
     profile: rest-api
     codegen:
-        defaultPackage: de.inventoris
+        defaultPackage: eveinabox
     spring:
         transactionManagement:
             proxies: false

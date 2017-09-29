@@ -1,4 +1,4 @@
-package de.inventoris
+package eveinabox
 
 class UrlMappings {
 

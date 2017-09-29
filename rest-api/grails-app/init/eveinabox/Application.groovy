@@ -1,4 +1,4 @@
-package de.inventoris
+package eveinabox
 
 import grails.boot.GrailsApp
 import grails.boot.config.GrailsAutoConfiguration

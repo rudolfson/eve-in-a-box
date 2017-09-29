@@ -1,4 +1,4 @@
-package de.inventoris
+package eveinabox
 
 import grails.core.GrailsApplication
 import grails.util.Environment
