@@ -7,4 +7,4 @@ docker run --rm -v ${PWD}:/local \
     --model-package de.inventoris.eve.esi.model \
     --invoker-package de.inventoris.eve.esi.invoke \
     --api-package de.inventoris.eve.esi.api \
-    -o /local/java-client
+    -o /local/

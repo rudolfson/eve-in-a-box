@@ -1,3 +1,4 @@
-// include 'esi-client'
+rootProject.name = 'eve-in-a-box'
+include 'esi-client'
 include 'rest-api'
 include 'client'
