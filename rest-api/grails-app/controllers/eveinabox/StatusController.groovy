@@ -1,11 +1,13 @@
 package eveinabox
 
+import grails.converters.JSON
+
 class StatusController {
     static responseFormats = ['json']
     def statusService
 
     def index() {
-        log.debug("I'm getting called")
-        respond statusService.status()
+        log.debug("getting called")
+        statusService.status()
     }
 }

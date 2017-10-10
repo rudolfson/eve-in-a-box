@@ -10,7 +10,6 @@ class StatusService {
     String datasource
 
     def status() {
-        log.debug("read server status on ${datasource}")
         statusApi.getStatus(datasource, null, null)
     }
 }
