@@ -1,10 +1,17 @@
 #!/bin/bash
+export MSYS_NO_PATHCONV=1
+
 docker run --rm -v ${PWD}:/local \
     swaggerapi/swagger-codegen-cli \
     generate \
     -i "https://esi.tech.ccp.is/_latest/swagger.json" \
     -l java \
-    --model-package de.inventoris.eve.esi.model \
-    --invoker-package de.inventoris.eve.esi.invoke \
-    --api-package de.inventoris.eve.esi.api \
-    -o /local/
+    -Djava8=true \
+    -DdateLibrary=java8 \
+    --model-package eve.esi.model \
+    --invoker-package eve.esi.invoke \
+    --api-package eve.esi.api \
+    -o /local
+
+export MSYS_NO_PATHCONV=0
+
