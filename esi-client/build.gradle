@@ -1,0 +1,41 @@
+apply plugin: 'idea'
+apply plugin: 'eclipse'
+
+group = 'eve.esi'
+version = '1.0.0'
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+    }
+}
+
+repositories {
+    jcenter()
+}
+
+apply plugin: 'java'
+
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
+
+install {
+    repositories.mavenInstaller {
+        pom.artifactId = 'swagger-java-client'
+    }
+}
+
+task execute(type:JavaExec) {
+    main = System.getProperty('mainClass')
+        classpath = sourceSets.main.runtimeClasspath
+}
+
+dependencies {
+    compile 'io.swagger:swagger-annotations:1.5.15'
+    compile 'com.squareup.okhttp:okhttp:2.7.5'
+    compile 'com.squareup.okhttp:logging-interceptor:2.7.5'
+    compile 'com.google.code.gson:gson:2.8.1'
+    testCompile 'junit:junit:4.12'
+}
