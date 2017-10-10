@@ -25,7 +25,7 @@ repositories {
 }
 
 dependencies {
-    //compile project(":esi-client")
+    compile project(":esi-client")
     compile "org.springframework.boot:spring-boot-starter-logging"
     compile "org.springframework.boot:spring-boot-autoconfigure"
     compile "org.springframework.boot:spring-boot-devtools"

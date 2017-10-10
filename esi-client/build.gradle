@@ -21,12 +21,6 @@ apply plugin: 'java'
 sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
 
-install {
-    repositories.mavenInstaller {
-        pom.artifactId = 'swagger-java-client'
-    }
-}
-
 task execute(type:JavaExec) {
     main = System.getProperty('mainClass')
         classpath = sourceSets.main.runtimeClasspath
