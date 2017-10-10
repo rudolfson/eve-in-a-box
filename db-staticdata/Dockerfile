@@ -2,7 +2,7 @@
 # PostgreSQL DB with imported EVE static data from fuzzwork
 #
 
-FROM postgres:alpine
+FROM postgres:10-alpine
 MAINTAINER leonty.alkaev@gmail.com
 
 RUN apk add --update ca-certificates openssl && update-ca-certificates && \
