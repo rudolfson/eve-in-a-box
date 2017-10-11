@@ -1,4 +1,4 @@
-import de.inventoris.eve.esi.api.StatusApi
+import eve.esi.api.StatusApi
 
 // Place your Spring DSL code here
 beans = {

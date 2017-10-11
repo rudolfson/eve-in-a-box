@@ -1,6 +1,6 @@
 package eveinabox
 
-import de.inventoris.eve.esi.api.StatusApi
+import eve.esi.api.StatusApi
 import org.springframework.beans.factory.annotation.Value
 
 class StatusService {

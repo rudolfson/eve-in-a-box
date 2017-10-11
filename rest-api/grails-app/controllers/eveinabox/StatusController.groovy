@@ -8,6 +8,6 @@ class StatusController {
 
     def index() {
         log.debug("getting called")
-        statusService.status()
+        render statusService.status() as JSON
     }
 }
