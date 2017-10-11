@@ -7,7 +7,6 @@ class StatusController {
     def statusService
 
     def index() {
-        log.debug("getting called")
-        render statusService.status() as JSON
+        respond(status: statusService.status())
     }
 }

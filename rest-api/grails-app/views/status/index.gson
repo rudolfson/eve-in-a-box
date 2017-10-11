@@ -1,7 +1,15 @@
+import eve.esi.model.GetStatusOk
+
+import java.time.format.DateTimeFormatter
+
 model {
+    GetStatusOk status
 }
 
 json {
-    aField "aValue"
+    players status.players
+    serverVersion status.serverVersion
+    startTime status.startTime.format(DateTimeFormatter.ISO_DATE_TIME)
+    vip status.vip ? "true" : "false"
 }
 
