@@ -12,6 +12,15 @@
 export default {
   name: 'Login',
   data () {
+    return {}
+  },
+  beforeRouteEnter (to, from, next) {
+    console.debug('to %o', to)
+    // validate login
+    if (to.query && to.query.code && to.query.state === 'login') {
+      console.debug('seems we came here for a call back')
+    }
+    next()
   },
   methods: {
     redirectToSSO () {
@@ -20,7 +29,7 @@ export default {
       url += '&redirect_uri=http%3A%2F%2Flocalhost%3A8800%2F%23%2Fpages%2Flogin'
       url += '&client_id=aa398ed41e1a433cbfd7e31e998b6b0c'
       url += '&scope=esi-planets.manage_planets.v1'
-      url += '&state=eveinabox'
+      url += '&state=login'
       window.location = url
     }
   }
