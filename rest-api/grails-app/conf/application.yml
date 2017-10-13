@@ -14,6 +14,12 @@ grails:
             # Whether to translate GORM events into Reactor events
             # Disabled by default for performance reasons
             events: false
+    views:
+        json:
+            compileStatic: false
+            enableReloading: true
+            cache: false
+
 
 server:
     port: 8888
