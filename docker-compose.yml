@@ -1,11 +1,21 @@
 version: '3'
 services:
-    db-appdata:
+    #db-appdata:
 
-    db-staticdata:
+    db-evesde:
+        image: eveinabox/db-evesde
+        build: ./db-evesde
+        container_name: db-evesde
+        volumes:
+            - db-evesde-data:/var/lib/postgresql/data
+        ports:
+            - "5543":"5432"
 
-    client:
 
-    rest-api:
 
-    
+        #client:
+
+        #rest-api:
+
+volumes:    
+    db-evesde-data:
