@@ -1,6 +1,13 @@
 version: '3'
 services:
-    #db-appdata:
+    db-app:
+        image: eveinabox/db-app
+        build: ./db-app
+        container_name: db-app
+        volumes:
+            - db-app-data:/var/lib/postgresql/data
+        ports:
+            - "5432:5432"
 
     db-evesde:
         image: eveinabox/db-evesde
@@ -9,7 +16,7 @@ services:
         volumes:
             - db-evesde-data:/var/lib/postgresql/data
         ports:
-            - "5543":"5432"
+            - "5543:5432"
 
 
 
@@ -19,3 +26,4 @@ services:
 
 volumes:    
     db-evesde-data:
+    db-app-data:
