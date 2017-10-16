@@ -1,16 +1,17 @@
 import eve.esi.model.GetStatusOk
-
 import java.time.format.DateTimeFormatter
+import grails.core.*
+import grails.util.*
+import grails.plugins.*
+import org.grails.core.artefact.*
 
 model {
     GetStatusOk status
 }
 
 json {
-    field: "value"
     players status.players
     serverVersion status.serverVersion
     startTime status.startTime.format(DateTimeFormatter.ISO_DATE_TIME)
     vip status.vip ? "true" : "false"
 }
-
