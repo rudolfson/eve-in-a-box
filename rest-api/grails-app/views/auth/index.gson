@@ -1,0 +1,12 @@
+import eve.esi.model.GetStatusOk
+import java.time.format.DateTimeFormatter
+import grails.core.*
+import grails.util.*
+import grails.plugins.*
+import org.grails.core.artefact.*
+
+model {
+    String message
+}
+
+json.message message
