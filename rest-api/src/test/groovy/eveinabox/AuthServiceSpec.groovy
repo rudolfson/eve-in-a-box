@@ -1,5 +1,6 @@
 package eveinabox
 
+import eveinabox.auth.AuthService
 import grails.testing.services.ServiceUnitTest
 import spock.lang.Specification
 
