@@ -1,5 +1,7 @@
 package eveinabox.auth
 
+import eveinabox.ApplicationUser
+import eveinabox.Character
 import grails.gorm.transactions.Transactional
 import org.springframework.http.HttpEntity
 import org.springframework.http.HttpHeaders
@@ -17,7 +19,20 @@ class AuthService {
     def login(String authorizationCode) {
         log.debug "login($authorizationCode)"
         def token = getAccessToken(authorizationCode)
-        verify(token)
+        def verifiedCharacter = verify(token)
+        Character character = Character.findByName(verifiedCharacter.name)
+        if (!character) {
+            log.debug("Character with id $verifiedCharacter.eveId not in database - creating it")
+            ApplicationUser user = new ApplicationUser()
+            character = new Character(eveId: verifiedCharacter.eveId, name: verifiedCharacter.name)
+            user.addToCharacters(character)
+            character.user = user
+            character.save()
+            user.save()
+        }
+        character.refreshToken = token.refreshToken
+        character.save()
+        return character.user
     }
 
     def addCharacter(String authorizationCode) {
@@ -39,7 +54,7 @@ class AuthService {
         responseEntity.body
     }
 
-    def verify(Token token) {
+    private verify(Token token) {
         HttpHeaders requestHeaders = new HttpHeaders()
         requestHeaders.add("Authorization", "Bearer ${token.accessToken}")
         HttpEntity<String> requestEntity = new HttpEntity<>(requestHeaders)
