@@ -34,6 +34,7 @@ if (Environment.isDevelopmentMode() && targetDir != null) {
     }
     logger("StackTrace", ERROR, ['FULL_STACKTRACE'], false)
 }
-root(Level.INFO, ['STDOUT'])
-logger('grails.app', DEBUG)
-logger('eveinabox', DEBUG)
+root INFO, ['STDOUT']
+logger 'grails.app', DEBUG
+logger 'eveinabox', DEBUG
+logger 'org.hibernate.SQL', TRACE

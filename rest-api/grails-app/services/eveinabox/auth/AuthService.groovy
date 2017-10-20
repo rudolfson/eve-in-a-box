@@ -9,6 +9,8 @@ import org.springframework.http.HttpMethod
 import org.springframework.util.Base64Utils
 import org.springframework.web.client.RestTemplate
 
+import java.time.ZoneOffset
+
 @Transactional
 class AuthService {
 
@@ -20,18 +22,23 @@ class AuthService {
         log.debug "login($authorizationCode)"
         def token = getAccessToken(authorizationCode)
         def verifiedCharacter = verify(token)
-        Character character = Character.findByName(verifiedCharacter.name)
+        Character character = Character.findByEveId(verifiedCharacter.eveId)
         if (!character) {
             log.debug("Character with id $verifiedCharacter.eveId not in database - creating it")
-            ApplicationUser user = new ApplicationUser()
-            character = new Character(eveId: verifiedCharacter.eveId, name: verifiedCharacter.name)
-            user.addToCharacters(character)
-            character.user = user
-            character.save()
-            user.save()
+            character = new Character(eveId: verifiedCharacter.eveId, name: verifiedCharacter.name, refreshToken: token.refreshToken)
         }
         character.refreshToken = token.refreshToken
+        character.accessToken = token.accessToken
+        character.expiresOn = verifiedCharacter.expiresOn.toInstant(ZoneOffset.UTC)
+
+        if (!character.user) {
+            def user = new ApplicationUser()
+            character.user = user
+            user.save()
+        }
+
         character.save()
+
         return character.user
     }
 

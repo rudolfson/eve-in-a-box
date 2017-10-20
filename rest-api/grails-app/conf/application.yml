@@ -14,6 +14,8 @@ grails:
             # Whether to translate GORM events into Reactor events
             # Disabled by default for performance reasons
             events: false
+        # always fail on errors during CRUD operations
+        failOnError: true
 
 server:
     port: 8888
@@ -81,6 +83,7 @@ hibernate:
 
 dataSource:
     pooled: true
+    logSql: true
     jmxExport: true
     driverClassName: org.postgresql.Driver
     username: postgres
