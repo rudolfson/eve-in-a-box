@@ -10,7 +10,10 @@ buildscript {
     }
 }
 
-version "0.1"
+configurations {
+    compile.exclude module: "spring-boot-starter-tomcat"
+}
+
 group "eveinabox"
 
 apply plugin:"idea"
@@ -28,7 +31,7 @@ dependencies {
     compile "org.springframework.boot:spring-boot-autoconfigure"
     compile "org.grails:grails-core"
     compile "org.springframework.boot:spring-boot-starter-actuator"
-    compile "org.springframework.boot:spring-boot-starter-tomcat"
+    compile "org.springframework.boot:spring-boot-starter-undertow"
     compile "org.grails:grails-plugin-url-mappings"
     compile "org.grails:grails-plugin-rest"
     compile "org.grails:grails-plugin-codecs"
@@ -61,18 +64,6 @@ dependencies {
 
     compile project(":esi-client")
 
-    //compile "org.springframework.boot:spring-boot-devtools"
-    //compile "org.grails:grails-core"
-    //compile "org.springframework.boot:spring-boot-starter-actuator"
-    //compile "org.springframework.boot:spring-boot-starter-tomcat"
-    //compile "org.grails:grails-plugin-url-mappings"
-    //compile "org.grails:grails-plugin-rest"
-    //compile "org.grails:grails-plugin-codecs"
-    //compile "org.grails:grails-plugin-interceptors"
-    //compile "org.grails:grails-plugin-async"
-    //compile "org.grails:grails-datastore-rest-client"
-    //compile "org.grails:grails-logging"
-    //testCompile "org.grails:grails-plugin-testing"
 }
 
 bootRun {

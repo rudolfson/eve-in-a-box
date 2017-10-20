@@ -23,9 +23,14 @@ services:
         build: ./client
         container_name: client
         ports:
-            - "8000:80"
+            - "8800:80"
 
-    #rest-api:
+    rest-api:
+        image: eveinabox/rest-api
+        build: ./rest-api
+        container_name: rest-api
+        ports:
+            - "8888:8888"
 
 volumes:
     db-evesde-data:
