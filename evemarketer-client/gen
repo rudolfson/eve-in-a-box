@@ -1,0 +1,17 @@
+#!/bin/bash
+export MSYS_NO_PATHCONV=1
+
+docker run --rm -v ${PWD}:/local \
+    swaggerapi/swagger-codegen-cli \
+    generate \
+    -i "https://api.evemarketer.com/ec/swagger.yaml" \
+    -l java \
+    -Djava8=true \
+    -DdateLibrary=java8 \
+    --model-package marketer.model \
+    --invoker-package marketer.invoke \
+    --api-package marketer.api \
+    -o /local
+
+export MSYS_NO_PATHCONV=0
+
