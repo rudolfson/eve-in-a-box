@@ -9,7 +9,7 @@ class AuthController {
     }
 
     def addCharacter() {
-        authService.addCharacter(params.authorizationCode)
-        respond(message: "addCharacter")
+        def response = authService.addCharacter(params.authorizationCode)
+        respond(message: "$response")
     }
 }
